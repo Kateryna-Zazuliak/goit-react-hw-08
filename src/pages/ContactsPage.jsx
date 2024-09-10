@@ -4,11 +4,7 @@ import ContactList from "../components/ContactList/ContactList.jsx";
 import Loader from "../components/Loader/Loader";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectCurrentContact,
-  selectError,
-  selectIsLoading,
-} from "../redux/contacts/selectors.js";
+import { selectError, selectIsLoading } from "../redux/contacts/selectors.js";
 import { useEffect } from "react";
 import { addContact, fetchContacts } from "../redux/contacts/operations.js";
 import toast from "react-hot-toast";
@@ -17,7 +13,6 @@ const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const currentContact = useSelector(selectCurrentContact);
   useEffect(() => {
     dispatch(fetchContacts())
       .unwrap()
@@ -36,11 +31,7 @@ const ContactsPage = () => {
   return (
     <div>
       <h1 className="title">Phonebook</h1>
-      {!currentContact ? (
-        <ContactForm onAddContact={onAddContact} />
-      ) : (
-        <EditForm />
-      )}
+      <ContactForm onAddContact={onAddContact} />
       <SearchBox />
       {isLoading && <Loader />}
       {error && <ErrorMessage message={error} />}

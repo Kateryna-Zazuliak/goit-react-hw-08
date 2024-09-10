@@ -13,4 +13,4 @@ export const selectFilteredContacts = createSelector(
 );
 export const selectIsLoading = (state) => state.contacts.isLoading;
 export const selectError = (state) => state.contacts.error;
-export const selectCurrentContact = (state) => state.currentContact;
+export const selectCurrentContact = (state) => state.contacts.currentContact;

@@ -1,15 +1,20 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaUser, FaPhone } from "react-icons/fa6";
 import { RiEdit2Line } from "react-icons/ri";
-import { deleteContact, editContact } from "../../redux/contacts/operations.js";
+import { deleteContact } from "../../redux/contacts/operations.js";
 import css from "./Contact.module.css";
+import EditForm from "../EditForm/EditForm.jsx";
 import ModalWindow from "../Modal/ModalWindow.jsx";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { setCurrentContact } from "../../redux/contacts/slice.js";
+import { selectCurrentContact } from "../../redux/contacts/selectors.js";
 
 const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [edit, setEdit] = useState(false);
+
   const onClick = () => {
     setModalIsOpen(true);
   };
@@ -27,8 +32,14 @@ const Contact = ({ name, number, id }) => {
     setModalIsOpen(false);
   };
   const onEditClick = () => {
-    dispatch(editContact({ id, name, number }));
+    setEdit(true);
+    dispatch(setCurrentContact({ id, name, number }));
   };
+  const currentContact = useSelector(selectCurrentContact);
+
+  if (edit) {
+    return <EditForm currentContact={currentContact} setEdit={setEdit} />;
+  }
   return (
     <div className={css.profile}>
       <ul>

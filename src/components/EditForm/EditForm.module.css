@@ -1,46 +1,66 @@
 .form {
-  width: 400px;
-  margin: 0 auto;
+  max-width: 200px;
+  margin-left: 0;
+  padding: 10px;
   position: relative;
-  margin-bottom: 80px;
+  box-shadow: 4px 4px 8px #1976d2;
 }
 
 .input {
-  width: 100%;
-  height: 56px;
-  border-style: none;
-  border-bottom: 1px solid #212121;
+  width: 200px;
+  height: 36px;
+  border: none;
+  border-bottom: 1px solid #545252;
+  border-radius: 4px;
+  height: 20px;
   background-color: transparent;
-  padding: 16px;
-  padding-right: 40px;
-  outline: none;
+  padding-left: 4px;
+  outline: 0;
   font-size: 18px;
   color: #212121;
   font-weight: 300;
   letter-spacing: 0.03em;
+  margin: 0;
   transition: 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
-  &::placeholder {
-    font-weight: 200;
-  }
 }
 
 .submitButton {
   width: 50px;
-  height: 50px;
+  height: 40px;
   font-size: 20px;
   font-weight: bold;
-  color: #212121;
+  border: 1px solid #1976d2;
+  border-radius: 5px;
+  background-color: #ffffff;
+  align-items: center;
+  cursor: pointer;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 5px;
+  right: -70px;
+  box-shadow: 4px 4px 8px #1976d2;
+
+  transition: background-color 0.3s cubic-bezier(0.7, 0.98, 0.86, 0.98);
 }
 .editButton {
   width: 50px;
-  height: 50px;
+  height: 40px;
   font-size: 20px;
   font-weight: bold;
-  color: #212121;
+  border: 1px solid #1976d2;
+  border-radius: 5px;
+  background-color: #ffffff;
+  align-items: center;
+  cursor: pointer;
   position: absolute;
-  top: 0;
-  right: 40px;
+  top: 50px;
+  right: -70px;
+  box-shadow: 4px 4px 8px #1976d2;
+
+  transition: background-color 0.3s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+}
+.submitButton:hover,
+.submitButton:focus,
+.editButton:hover,
+.editButton:focus {
+  background-color: #115192;
 }

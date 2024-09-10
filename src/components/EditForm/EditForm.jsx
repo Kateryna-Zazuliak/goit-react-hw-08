@@ -1,10 +1,12 @@
 import { RiSaveLine } from "react-icons/ri";
 import { MdOutlineCancel } from "react-icons/md";
 import css from "./EditForm.module.css";
-import { useDispatch } from "react-redux";
-import { selectCurrentContact } from "../../redux/contacts/selectors";
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useDispatch, useSelector } from "react-redux";
 import { editContact } from "../../redux/contacts/operations";
 import { setCurrentContact } from "../../redux/contacts/slice";
+import toast from "react-hot-toast";
 
 const phoneRegExp = /^[0-9]{3}-[0-9]{2}-[0-9]{2}$/;
 const ContactValidationSchema = Yup.object().shape({
@@ -19,20 +21,30 @@ const ContactValidationSchema = Yup.object().shape({
     .required("Required"),
 });
 
-export const EditForm = () => {
+export const EditForm = ({ setEdit, currentContact }) => {
   const dispatch = useDispatch();
-  const currentContact = useSelector(selectCurrentContact);
+
   const initialValues = {
     name: currentContact?.name || "",
     number: currentContact?.number || "",
   };
   const handleSubmit = (values, actions) => {
-    dispatch(editContact({ ...values, id: currentContact.id }));
-    dispatch(setCurrentContact(null));
-    actions.resetForm();
+    const contactId = currentContact?.id;
+    dispatch(editContact({ id: contactId, contact: { ...values } }))
+      .unwrap()
+      .then(() => {
+        dispatch(setCurrentContact(null));
+        actions.resetForm();
+        toast.success("Contact updated successfully🎉");
+        setEdit(false);
+      })
+      .catch((error) => {
+        console.log("Error updating contact:", error);
+      });
   };
   const handleCancel = () => {
     dispatch(setCurrentContact(null));
+    setEdit(false);
   };
 
   return (
@@ -40,6 +52,7 @@ export const EditForm = () => {
       initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={ContactValidationSchema}
+      enableReinitialize
     >
       {({ errors }) => (
         <Form className={css.form}>
@@ -70,17 +83,18 @@ export const EditForm = () => {
             type="submit"
             disabled={Object.keys(errors).length > 0}
           >
-            <RiSaveLine color="green" size="16px" />
+            <RiSaveLine color="green" size="36px" />
           </button>
           <button
             className={css.editButton}
             type="button"
             onClick={handleCancel}
           >
-            <MdOutlineCancel color="red" size="16px" />
+            <MdOutlineCancel color="red" size="36px" />
           </button>
         </Form>
       )}
     </Formik>
   );
 };
+export default EditForm;

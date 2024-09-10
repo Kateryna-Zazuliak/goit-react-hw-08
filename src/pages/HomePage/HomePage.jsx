@@ -6,9 +6,9 @@ const HomePage = () => {
       <h1 className={css.title}>Welcome to Phonebook</h1>
       <p className={css.description}>
         Phonebook is a simple and efficient application for managing your
-        contacts. With Phonebook, you can easily add and delete contacts. It is
-        designed to be user-friendly and intuitive, making contact management
-        straightforward and hassle-free.
+        contacts. With Phonebook, you can easily add, edit and delete contacts.
+        It is designed to be user-friendly and intuitive, making contact
+        management straightforward and hassle-free.
       </p>
       <div className={css.about}>
         <h2 className={css.subtitle}>About the Developer</h2>
