@@ -1,0 +1,68 @@
+.profile {
+  width: 250px;
+  margin-right: 0;
+  padding: 10px 5px 10px 10px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  transition: border 0.3s cubic-bezier(0.7, 0.98, 0.86, 0.98),
+    scale 0.3s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+}
+.profile:hover,
+.profile:focus {
+  border: 1px solid #00a6ff;
+  border-radius: 5px;
+  scale: 1.05;
+}
+
+.info {
+  font-size: 18px;
+  line-height: 1.25;
+  margin-bottom: 10px;
+  margin-top: 0;
+  padding-left: 10px;
+}
+.deleteBtn {
+  display: flex;
+  border: 1px solid #1976d2;
+  border-radius: 5px;
+  background-color: #1976d2;
+  color: #ffffff;
+  padding: 10px;
+  width: 50px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 30px;
+  margin-right: 0;
+  transition: background-color 0.3s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+}
+.editButton {
+  display: flex;
+  border: 1px solid #1976d2;
+  border-radius: 5px;
+  background-color: #1976d2;
+  padding: 10px;
+  width: 50px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 30px;
+  margin-right: 0;
+  transition: background-color 0.3s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+}
+.deleteBtn:hover,
+.deleteBtn:focus,
+.editButton:hover,
+.editButton:focus {
+  background-color: #115192;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

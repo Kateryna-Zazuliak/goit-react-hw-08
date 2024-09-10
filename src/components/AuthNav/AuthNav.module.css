@@ -1,0 +1,22 @@
+.nav {
+  align-items: center;
+  gap: 12px;
+  margin-right: 55px;
+}
+.link {
+  display: inline-flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  border-color: transparent;
+  color: #115192;
+  transition: color 0.5s ease;
+}
+.linkActive {
+  color: #fff;
+}
+.link:focus,
+.link:hover {
+  color: #fff;
+}

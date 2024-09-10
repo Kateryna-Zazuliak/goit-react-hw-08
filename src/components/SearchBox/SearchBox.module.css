@@ -1,0 +1,22 @@
+.titleSearch {
+  font-size: 18px;
+  font-weight: 400;
+  margin-left: 55px;
+  margin-bottom: 4px;
+}
+.input {
+  font-size: 18px;
+  font-weight: 400;
+  border: 1px solid #545252;
+  border-radius: 4px;
+  padding: 8px;
+  width: 270px;
+  height: 25px;
+  margin-left: 55px;
+  outline: 0;
+}
+
+.input:focus {
+  outline: 0;
+  border-color: #1976d2;
+}
